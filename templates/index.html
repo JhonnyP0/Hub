@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <style>@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');</style>
+</head>
+<body>
+    <header>    
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('index') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('projects') }}">Projects</a></li>
+                <li><a href="{{ url_for('opinion') }}">Reviews</a></li>
+                {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                {% else %}
+                <li><a href="{{ url_for('login') }}">Log In</a></li>
+                <li><a href="{{ url_for('register') }}">Register</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="flash-container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="flash-msg {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+    </div>
+    {% block content %}
+        <section id="main-hero">
+                
+            <h1>Welcome on my portfolio app</h1>
+            <p>This is a simple web application built with Flask and MySQL.</p>
+            <p>Explore the projects section to see what I've been working on.</p>
+        </section>
+        
+        <section id="about-me">
+        <h1>About Me</h1>
+        
+        <div class="about-content">
+            <p>Hello! I'm Jan Pachulski, a student with experience in building web applications using Python Web Frameworks. I love creating efficient and user-friendly applications. In my free time, I enjoy learning new technologies and improving my coding skills.</p>
+            
+            <p>I usually work with Python, HTML, Docker and MySQL while working on projects like this one. Feel free to reach out to me through the contact form in the projects section, where you can learn more about my projects!</p>
+        </div>
+
+        </section>
+    {% endblock %}
+    </main>
+<footer>
+    <p><a href="{{ url_for('opinion') }}">Share your thoughts!</a></p>
+    <p> Please remember this is a presentation of my skills and not a commercial project. DO NOT PROVIDE HERE ANY SENSITIVE DATA!</p>
+</footer>
+<script>
+
+        document.addEventListener("DOMContentLoaded", function() {
+            
+            const messages = document.querySelectorAll('.flash-msg');
+            
+            if (messages.length > 0) {
+                setTimeout(function() {
+                    messages.forEach(function(msg) {
+                        
+                        msg.style.opacity = '0';
+                        
+                        setTimeout(function() {
+                            msg.remove();
+                        }, 600);
+                    });
+                }, 4000);
+            }
+        });
+    </script>
+    </body>
+</html>

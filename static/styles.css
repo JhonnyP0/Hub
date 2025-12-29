@@ -1,0 +1,303 @@
+/* TODO: dodanie responsywnosci na mobilki, polepszenie efektow wizualnych na wszystkich stronach poza index.html */
+:root {
+  --bg-dark-1: #16161c;
+  --bg-dark-2: #1e1e21;
+  --muted: rgba(255, 255, 255, 0.7);
+  --transition: 200ms ease;
+  --radius: 20px;
+}
+
+.varela-round-regular {
+  font-family: "Varela Round", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body { 
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    font-family: "Varela Round", sans-serif;
+    background: radial-gradient(800px at 10% 20%, rgba(10, 150, 12, 0.373), transparent 40%),
+              radial-gradient(600px at 90% 80%, rgba(5, 179, 13, 0.2), transparent 40%),
+              linear-gradient(180deg, var(--bg-dark-1), var(--bg-dark-2));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    background-color: #0000006b;
+    padding: 1em;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(12, 239, 4, 0.68);
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 1em;
+    align-items: center; 
+    justify-content: center;
+}
+
+ul a {
+    padding: 1em;
+    text-decoration: none;
+    color: #41bb25;
+    transition: 500ms;
+}
+
+ul a:hover {
+    color: #c6cc62;
+    transition: 5   00ms;
+}
+
+#main-hero {
+    position: relative; 
+    overflow: hidden;  
+    border-radius: 2em;
+    width: 80%;
+    height: 37vh;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;             
+    flex-direction: column;    
+    justify-content: center;   
+    align-items: center;       
+    text-align: center;
+    color: #ffffff;
+
+}
+
+#main-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('herobg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    filter: blur(4px);
+    transform: scale(1.05); 
+    z-index: 0;
+
+    -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 100%);
+}
+
+#main-hero h1, 
+#main-hero p {
+    position: relative;
+    z-index: 1; 
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.737); 
+}
+
+.about-content {
+    display: flex;           
+    flex-direction: row;     
+    gap: 3em;                
+    width: 90%;              
+    margin-top: 1em;         
+    text-align: justify;    
+}
+
+
+.about-content p {
+    flex: 1;                
+    margin: 0;               
+    line-height: 1.6;       
+}
+
+
+@media (max-width: 768px) {
+    .about-content {
+        flex-direction: column;
+        gap: 1em;
+        text-align: center;  
+    }
+    
+    #about-me {
+        height: auto;        
+        padding: 2em 0;         
+    }
+}
+
+#about-me
+{
+    position: relative; 
+    overflow: hidden;  
+    border-radius: 2em;
+    width: 50%;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex:1;             
+    flex-direction: column;    
+    justify-content: center;   
+    align-items: center;       
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 2em;
+}
+
+main{
+    flex: 1;
+    width: 100%;
+}
+
+footer
+{
+    font-size: 12px;
+    max-height: 5em;
+    text-align: center;
+    background-color: #0000004f;
+    text-shadow: 0 0px 4px rgba(12, 239, 4, 0.109);
+}
+
+.credform
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    width: 13em;
+    margin: 2em auto;
+}
+
+.credform input
+{
+    width: 100%;
+    padding: 0.5em;
+    border-radius: var(--radius);
+    border: none;
+    outline: none;
+    font-family: "Varela Round", sans-serif;
+    font-size: 14px;
+    background-color: #3b3b3b8b;
+    color:rgba(12, 239, 4, 0.68);
+}
+
+#submit
+{
+width: 108%;
+}
+
+#about-project
+{
+    position: relative; 
+    overflow: hidden;  
+    border-radius: 2em;
+    width: 83%;
+    height: 50vh;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;             
+    flex-direction: column;    
+    justify-content: center;   
+    align-items: center;       
+    text-align: center;
+    color: #ffffff;
+
+}
+
+#about-project:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('herobg.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center 40%;
+    filter: blur(4px);
+    transform: scale(1.05); 
+    z-index: 0;
+
+      -webkit-mask-image: radial-gradient(ellipse at center, black 20%, transparent 100%);
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 100%);
+}
+#about-project ul, 
+#about-project h1, 
+#about-project h2, 
+#about-project p {
+    padding: 0 2em;
+    position: relative;
+    z-index: 1; 
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.737); 
+}
+
+#tech-list li:first-line
+{
+    color: #41bb25;
+}
+
+#reviews
+{
+    padding: 3em;
+    margin: 2em auto;
+    width: 60%;
+    color: #ffffff;
+    background-color: #0000004f;
+    border-radius: 2em;
+}
+
+.flash-container {
+    width: 80%;
+    margin: 1em auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.flash-msg {
+    padding: 15px;
+    border-radius: 10px;
+    font-family: "Varela Round", sans-serif;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    
+
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.flash-msg.success {
+    background-color: rgba(65, 187, 37, 0.2);
+    border: 2px solid #41bb25;
+    color: #41bb25;
+}
+
+
+.flash-msg.error {
+    background-color: rgba(255, 77, 77, 0.2);
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+}
+
+
+.flash-msg.info, .flash-msg.warning {
+    background-color: rgba(198, 204, 98, 0.2);
+    border: 2px solid #c6cc62;
+    color: #c6cc62;
+}
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

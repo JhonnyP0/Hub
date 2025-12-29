@@ -1,0 +1,28 @@
+{%extends "index.html"%}
+
+{%block content%}
+    <form class="credform" method="POST">
+        {{ form.hidden_tag() }}
+        <div>
+            {{ form.score(placeholder="Score (1-5)") }}
+        </div>
+        <div>
+            {{ form.content(placeholder="Your Opinion") }}
+        </div>
+        <div>
+            {{ form.submit() }}
+        </div>
+</form>
+    <section id="reviews">
+        
+        {% for post in opinions %}
+            <div class="review">
+                <h3>Score: {{ post.opinion_score }}</h3>
+                <p>{{ post.content }}</p>
+                <small>By: {{ post.author.username }} on {{ post.created_at }}</small>
+            </div>
+        {% else %}
+            <p>No reviews yet. Be the first to submit one!</p>
+        {% endfor %}
+    </section>
+{%endblock%}

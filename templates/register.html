@@ -1,0 +1,21 @@
+
+{% extends "index.html" %}
+
+{% block content %}
+            <form class="credform" method="POST">
+                {{ form.hidden_tag() }}
+                <div>
+                    {{ form.email(placeholder="Email") }}
+                </div>
+                <div>
+                    {{ form.username(placeholder="Username (Visible on reviews!)") }}
+                </div>
+                <div>
+                    {{ form.password(placeholder="Password") }}
+                </div>
+                <div>
+                    {{ form.repeat_password(placeholder="Repeat Password") }}
+                </div>
+                {{ form.submit() }}
+            </form>
+{% endblock %}

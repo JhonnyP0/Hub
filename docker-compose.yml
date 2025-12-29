@@ -1,0 +1,49 @@
+services:
+
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_DATABASE: ${DB_NAME}
+      TZ: Europe/Warsaw
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - network
+    healthcheck:
+      test: ["CMD", "mysqladmin","ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+      timeout: 10s
+      start_period: 20s
+    env_file:
+      - .env
+    restart: always
+
+
+  flask:
+    build:
+      context: .
+    command: gunicorn -w 4 -b 0.0.0.0:5000 app:app
+    environment:
+      FLASK_APP: app.py
+      FLASK_ENV: development
+      TZ: Europe/Warsaw
+    ports:
+      - "7227:5000"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - network
+    env_file:
+      - .env
+    restart: always
+
+
+networks:
+  network:
+    driver:  bridge

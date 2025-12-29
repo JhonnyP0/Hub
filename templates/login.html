@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+{% block content %}
+        <form class="credform" method="POST">
+            {{ form.hidden_tag() }}
+            <div>
+                {{ form.username(placeholder="Username") }}
+            </div>
+            <div>
+                {{ form.password(placeholder="Password") }}
+            </div>
+            <div>
+            {{ form.submit() }}
+            </div>
+        </form>
+{% endblock %}
